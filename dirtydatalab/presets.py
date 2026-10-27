@@ -1,0 +1,67 @@
+"""Reusable domain schemas and realistic French reference locations."""
+
+FR_CITIES = [
+    {"ville": "Paris", "code_postal": "75001", "departement": "Paris", "region": "Île-de-France", "latitude": 48.8606, "longitude": 2.3376},
+    {"ville": "Amiens", "code_postal": "80000", "departement": "Somme", "region": "Hauts-de-France", "latitude": 49.8941, "longitude": 2.2958},
+    {"ville": "Lille", "code_postal": "59000", "departement": "Nord", "region": "Hauts-de-France", "latitude": 50.6292, "longitude": 3.0573},
+    {"ville": "Lyon", "code_postal": "69002", "departement": "Rhône", "region": "Auvergne-Rhône-Alpes", "latitude": 45.7578, "longitude": 4.8320},
+    {"ville": "Marseille", "code_postal": "13001", "departement": "Bouches-du-Rhône", "region": "Provence-Alpes-Côte d'Azur", "latitude": 43.2965, "longitude": 5.3698},
+    {"ville": "Toulouse", "code_postal": "31000", "departement": "Haute-Garonne", "region": "Occitanie", "latitude": 43.6047, "longitude": 1.4442},
+    {"ville": "Bordeaux", "code_postal": "33000", "departement": "Gironde", "region": "Nouvelle-Aquitaine", "latitude": 44.8378, "longitude": -0.5792},
+    {"ville": "Nantes", "code_postal": "44000", "departement": "Loire-Atlantique", "region": "Pays de la Loire", "latitude": 47.2184, "longitude": -1.5536},
+    {"ville": "Strasbourg", "code_postal": "67000", "departement": "Bas-Rhin", "region": "Grand Est", "latitude": 48.5734, "longitude": 7.7521},
+    {"ville": "Rennes", "code_postal": "35000", "departement": "Ille-et-Vilaine", "region": "Bretagne", "latitude": 48.1173, "longitude": -1.6778},
+    {"ville": "Nice", "code_postal": "06000", "departement": "Alpes-Maritimes", "region": "Provence-Alpes-Côte d'Azur", "latitude": 43.7102, "longitude": 7.2620},
+    {"ville": "Grenoble", "code_postal": "38000", "departement": "Isère", "region": "Auvergne-Rhône-Alpes", "latitude": 45.1885, "longitude": 5.7245},
+    {"ville": "Dijon", "code_postal": "21000", "departement": "Côte-d'Or", "region": "Bourgogne-Franche-Comté", "latitude": 47.3220, "longitude": 5.0415},
+    {"ville": "Tours", "code_postal": "37000", "departement": "Indre-et-Loire", "region": "Centre-Val de Loire", "latitude": 47.3941, "longitude": 0.6848},
+    {"ville": "Rouen", "code_postal": "76000", "departement": "Seine-Maritime", "region": "Normandie", "latitude": 49.4432, "longitude": 1.0993},
+]
+
+PRESETS = {
+    "Éducation": [
+        {"name": "id_eleve", "kind": "entier", "min": None, "max": None},
+        {"name": "nom", "kind": "texte"},
+        {"name": "prenom", "kind": "texte"},
+        {"name": "niveau", "kind": "categorie", "choices": "6e|5e|4e|3e|2nde|1re|Terminale"},
+        {"name": "note", "kind": "decimal", "min": 0, "max": 20},
+        {"name": "date_inscription", "kind": "date"},
+        {"name": "email", "kind": "email"},
+        {"name": "ville", "kind": "ville"},
+    ],
+    "Géographie": [
+        {"name": "id_lieu", "kind": "entier"},
+        {"name": "ville", "kind": "ville"},
+        {"name": "departement", "kind": "texte"},
+        {"name": "code_postal", "kind": "code_postal"},
+        {"name": "latitude", "kind": "latitude"},
+        {"name": "longitude", "kind": "longitude"},
+        {"name": "region", "kind": "texte"},
+        {"name": "pays", "kind": "pays"},
+    ],
+    "Commerce": [
+        {"name": "id_commande", "kind": "entier"},
+        {"name": "client", "kind": "texte"},
+        {"name": "produit", "kind": "categorie", "choices": "Livre|Ordinateur|Écran|Sac|Stylo|Chaise"},
+        {"name": "quantite", "kind": "entier", "min": 1, "max": 20},
+        {"name": "prix", "kind": "decimal", "min": 5, "max": 800},
+        {"name": "statut", "kind": "categorie", "choices": "Commandée|Expédiée|Livrée|Annulée"},
+        {"name": "date_commande", "kind": "date"},
+    ],
+    "Ressources humaines": [
+        {"name": "id_employe", "kind": "entier"},
+        {"name": "nom", "kind": "texte"},
+        {"name": "prenom", "kind": "texte"},
+        {"name": "service", "kind": "categorie", "choices": "RH|Finance|IT|Achats|Ventes|Logistique"},
+        {"name": "salaire", "kind": "decimal", "min": 1900, "max": 6500},
+        {"name": "date_embauche", "kind": "date"},
+        {"name": "email", "kind": "email"},
+        {"name": "ville", "kind": "ville"},
+    ],
+    "Personnalisé": [
+        {"name": "id", "kind": "entier"},
+        {"name": "libelle", "kind": "texte"},
+        {"name": "montant", "kind": "decimal", "min": 1, "max": 1000},
+        {"name": "date_evenement", "kind": "date"},
+    ],
+}
